@@ -1031,7 +1031,7 @@
       // but we're currently in a browser that doesn't support it...
       if (this._wantsHashChange && this._wantsPushState && !this._hasPushState && !atRoot) {
         this.fragment = this.getFragment(null, true);
-        window.location.replace(this.options.root + '#' + this.fragment);
+        window.location.replace(this.options.root + '#' + encodeURIComponent(this.fragment));
         // Return immediately as browser will do redirect to new url
         return true;
 
@@ -1039,7 +1039,7 @@
       // in a browser where it could be `pushState`-based instead...
       } else if (this._wantsPushState && this._hasPushState && atRoot && loc.hash) {
         this.fragment = this.getHash().replace(routeStripper, '');
-        window.history.replaceState({}, document.title, loc.protocol + '//' + loc.host + this.options.root + this.fragment);
+        window.history.replaceState({}, document.title, loc.protocol + '//' + loc.host + this.options.root + encodeURIComponent(this.fragment));
       }
 
       if (!this.options.silent) {
@@ -1119,7 +1119,7 @@
       // If you've told us that you explicitly don't want fallback hashchange-
       // based history, then `navigate` becomes a page refresh.
       } else {
-        window.location.assign(this.options.root + fragment);
+        window.location.assign(this.options.root + encodeURIComponent(fragment));
       }
       if (options.trigger) this.loadUrl(fragment);
     },

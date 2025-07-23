@@ -569,14 +569,14 @@
 
     function show_dropdown_searching() {
       if (settings.searchingText) {
-        dropdown.html("<p>" + settings.searchingText + "</p>");
+        dropdown.text(settings.searchingText); // Use text() instead of html()
         show_dropdown();
       }
     }
 
     function show_dropdown_hint() {
       if (settings.hintText) {
-        dropdown.html("<p>" + settings.hintText + "</p>");
+        dropdown.text(settings.hintText); // Use text() instead of html()
         show_dropdown();
       }
     }
@@ -634,7 +634,7 @@
         }
       } else {
         if (settings.noResultsText) {
-          dropdown.html("<p>" + settings.noResultsText + "</p>");
+          dropdown.text(settings.noResultsText); // Use text() instead of html()
           show_dropdown();
         }
       }
